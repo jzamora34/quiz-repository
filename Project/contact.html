@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive Web Design-->
     <title>Contact Us</title>
     
     <!-- Font Awesome for social media icons -->
@@ -14,6 +14,9 @@
             font-family: 'Times New Roman', Times, serif;
             margin: 0;
         }
+        /*Color option [A]: #FFFFFF #84DCC6 #A5FFD6 */
+        /*Color option [B]: #1C5D99 #639FAB #BBCDE5 */
+        /*Color option [C]: #F5EDF0 #886F68 #3D2C2E */
 
         /* Sidebar styling */
         .sidebar {
@@ -86,7 +89,7 @@
         .container {
             max-width: 800px;
             margin: auto;
-            padding: 20px;
+            padding: 10px;
             background-color: #f2f2f2;
             border-radius: 5px;
             text-align: center;
@@ -103,8 +106,8 @@
         .container textarea {
             display: block;
             width: 100%;
-            margin-top: 10px;
-            margin-bottom: 16px;
+            margin-top: 0px;
+            margin-bottom: 4px;
             font-size: 18px;
             padding: 12px;
             border: 1px solid #ccc;
@@ -117,8 +120,8 @@
             padding: 12px 20px;
             border: none;
             cursor: pointer;
-            font-size: 18px;
-            width: 100%;
+            font-size: 16px;
+            width: 103.5%;
         }
 
         .container input[type="submit"]:hover {
@@ -129,7 +132,7 @@
         .column {
             float: left;
             width: 100%;
-            padding: 20px;
+            padding: 2px;
             box-sizing: border-box;
         }
 
@@ -165,7 +168,8 @@
 
     <!-- Main content area -->
     <div id="main">
-        <button class="openbtn" onclick="openNav()">☰</button>  
+            <!-- Button to open sidebar -->
+    <button class="openbtn" onclick="openNav()">☰ <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px; vertical-align: middle;"></button> <!-- Quiz logo sizing -->
 
         <!-- Contact Form Section -->
         <div class="container">

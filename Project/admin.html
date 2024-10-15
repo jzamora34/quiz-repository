@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive Web Design-->
     <title>Quizineer</title>
     
     <!-- Font Awesome for social media icons -->
@@ -15,6 +15,9 @@
             font-family: 'Times New Roman', Times, serif;
             margin: 0; /* Removes default margin for the body */
         }
+        /*Color option [A]: #FFFFFF #84DCC6 #A5FFD6 */
+        /*Color option [B]: #1C5D99 #639FAB #BBCDE5 */
+        /*Color option [C]: #F5EDF0 #886F68 #3D2C2E */
 
         /* Sidebar styling */
         .sidebar {
@@ -150,11 +153,12 @@
 
     <!-- Main content area -->
     <div id="main">
-        <button class="openbtn" onclick="openNav()">☰</button>  
+            <!-- Button to open sidebar -->
+    <button class="openbtn" onclick="openNav()">☰ <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px; vertical-align: middle;"></button> <!-- Quiz logo sizing --> 
 
         <!-- Login Form Section -->
         <div class="main">
-            <img src="png" alt="LOGO GOES HERE" style="width: 100px; height: 100px;">
+            <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 130px; height: 120px;">
             <h1><b>Admin Login</b></h1>
             <h3>Enter your login credentials</h3>
             <form action="admin.html" method="post">
