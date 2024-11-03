@@ -1,0 +1,627 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* Base styling for the body */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    background-color: #f5edf0;
+    color: #3d2c2e;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #3D2C2E;
+    overflow-x: hidden;
+    -webkit-transition: 0.7s;
+    -o-transition: 0.7s;
+    transition: 0.7s;
+    padding-top: 80px;
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 10px 30px;
+    font-size: 22px;
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    
+}
+
+.sidebar a:hover {
+    color: #639FAB;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* Button to Open Sidebar */
+.openbtn {
+    font-size: 20px;
+    background-color: #3D2C2E;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.openbtn img {
+    vertical-align: middle;
+    width: 120px;
+}
+
+#main {
+    -webkit-transition: margin-left 0.7s;
+    -o-transition: margin-left 0.7s;
+    transition: margin-left 0.7s;
+    padding: 20px;
+}
+
+/* Hero Section Styling */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f0f0f5;
+    color: #3d2c2e;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    font-size: 1em;
+    padding: 10px 20px;
+    color: white;
+    background-color: #639FAB;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.hero button:hover {
+    background-color: #4d7a89;
+}
+
+/* Feature Highlights Section */
+.features {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    color: #3d2c2e;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+}
+
+.feature-item {
+    width: 200px;
+    padding: 20px;
+    background-color: #639FAB;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.feature-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+}
+
+.feature-item:hover {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    background-color: #4d7a89;
+}
+
+/* Theme Toggle Styling */
+.theme-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 15px 30px;
+}
+
+/* Theme toggle labels */
+#light-mode-label {
+    color: #FFFFFF;
+    margin-right: 8px;
+}
+
+#dark-mode-label {
+    color: #FFFFFF;
+    margin-left: 8px;
+}
+
+/* Toggle Switch */
+#theme-toggle-checkbox {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    width: 50px;
+    height: 20px;
+    background-color: #639FAB;
+    border-radius: 15px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle-checkbox:checked {
+    background-color: #639FAB;
+}
+
+#theme-toggle-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+#theme-toggle-checkbox:checked::after {
+    -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+            transform: translateX(26px);
+}
+
+/* Footer Styling */
+.footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: #3D2C2E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .social-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 25px;
+}
+
+.footer .social-icons a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #639FAB;
+}
+
+.footer-text {
+    margin-left: auto;
+    padding-right: 40px;
+    color: #639FAB;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Responsive Footer Text Adjustments */
+@media screen and (max-width: 600px) {
+    .footer-text {
+        font-size: 14px;
+        padding-right: 0px;
+    }
+}
+
+/* About Section Styling */
+.container.about-section {
+    background-color: #ffffff;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: auto;
+    -webkit-box-shadow: 0 4px 10px rgba(175, 25, 25, 0.1);
+            box-shadow: 0 4px 10px rgba(175, 25, 25, 0.1);
+    border-radius: 20px;
+}
+
+/* Team Members Grid */
+.team-grid {
+    display: flex;
+    justify-content: space-between; /* Evenly spaced items in one row */
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* Individual Team Member Styling */
+.member {
+    background-color: #639FAB;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 23%; /* Adjusted width for four members in a row */
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive layout for medium and small screens */
+@media (max-width: 1200px) {
+    .team-grid {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: center;
+    }
+    .member {
+        width: 45%; /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .member {
+        width: 100%; /* Single column on small screens */
+    }
+}
+
+
+/* Default color for section headers */
+.member h4 {
+    color: #000; /* Black text by default */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+/* Dark mode color for section headers */
+body.dark-mode .member h4 {
+    color: #fff; /* White text in dark mode */
+}
+
+
+.member img {
+    width: 100%;
+    border-radius: 30%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.member:hover {
+    background-color: #3d2c2e;
+}
+
+.short-qualifications {
+    color: rgb(252, 251, 251);
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+
+/* Full Qualifications Section */
+.full-qualifications {
+    display: none;
+    text-align: left;
+    background-color: #ffffff; /* White background color */
+    padding: 30px; /* Increased padding for better appearance */
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 95%; /* Expanded width for better appearance */
+    border: 2px solid #3d2c2e; /* White border within the moonstone border */
+}
+
+.full-qualifications.show {
+    display: block;
+}
+
+.arrow {
+    color: #3D2C2E;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 40px;
+    margin-top: 10px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.rotate {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #2c2c2c;
+    color: #fafafa;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+    color: #fafafa;
+}
+
+body.dark-mode .container,
+body.dark-mode .team-grid .member {
+    background-color: #3d3d3d;
+    color: #fafafa;
+}
+
+body.dark-mode .full-qualifications {
+    background-color: #3d3d3d;
+    color: #fafafa;
+    border-color: #fafafa;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background-color: #333;
+    color: #fafafa;
+}
+
+body.dark-mode input::-webkit-input-placeholder, body.dark-mode textarea::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+body.dark-mode input::-moz-placeholder, body.dark-mode textarea::-moz-placeholder {
+    color: #ccc;
+}
+
+body.dark-mode input:-ms-input-placeholder, body.dark-mode textarea:-ms-input-placeholder {
+    color: #ccc;
+}
+
+body.dark-mode input::-ms-input-placeholder, body.dark-mode textarea::-ms-input-placeholder {
+    color: #ccc;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #ccc;
+}
+
+/* Credits Section Styling (Line Layout for Team Members) */
+.container.credits-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    gap: 20px;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+/* Team Member Styling in Credits Section */
+.container.credits-section .member {
+    background-color: #639FAB;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: calc(20% - 10px);
+    -webkit-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* Center-align the Credits heading in the credits-section */
+.credits-section h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+    .container.credits-section .member {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 500px) {
+    .container.credits-section .member {
+        width: 100%;
+    }
+}
+
+/* Styling for Form Containers (Admin Login, Contact Us) */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Form and Button Styling */
+.container input[type="text"],
+.container input[type="password"],
+.container input[type="email"],
+.container input[type="tel"],
+.container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transition: border-color 0.3s ease;
+    -o-transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease;
+}
+
+.container input[type="submit"],
+.container button {
+    background-color: #3D2C2E;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.container input[type="submit"]:hover,
+.container button:hover {
+    background-color: #272021;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .feature-list {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+    .feature-item {
+        width: 80%;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .footer-text {
+        font-size: 14px;
+        padding-right: 0px;
+    }
+}
+
+/* Admin Dashboard */
+.quiz-form button[type="button"] {
+    margin-bottom: 10px; /* Space below the Add Question button */
+}
+
+.quiz-form input[type="submit"] {
+    margin-top: 5px; /* Space above the Submit Quiz button */
+}
+
+.spaced-bottom {
+    margin-bottom: 20px; /* Adjust this value as necessary */
+}
+
+/* Quiz Bank Container Styling */
+.container {
+    max-width: 1200px; /* Limits width on larger screens */
+    margin: 20px auto; /* Centers container with margin on top and bottom */
+    padding: 20px;
+    background-color: #ffffff; /* White background for quiz bank */
+    border-radius: 10px; /* Rounded corners */
+    -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    width: 90%; /* Ensures responsiveness on smaller screens */
+    overflow-x: auto; /* Allows horizontal scroll if needed */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+
+
