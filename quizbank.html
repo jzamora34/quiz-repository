@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bank - Quizineer</title>
+
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to external CSS file for page styling -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+    <!-- Favicons and App Icons -->
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="Images/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="Images/android-chrome-512x512.png">
+    <meta name="msapplication-TileImage" content="Images/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <!-- Additional CSS for Table Styling -->
+    <style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 2px solid #3d2c2e;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #639FAB;
+            padding: 10px;
+            text-align: center;
+            background-color: #f5edf0;
+        }
+        th {
+            background-color: #3d2c2e;
+            color: white;
+        }
+        tr:nth-child(even) td {
+            background-color: #e0d7d9;
+        }
+        .logout-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .logout-btn {
+            background-color: #3D2C2E;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-transition: background-color 0.3s;
+            -o-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #639fab;
+        }
+
+        .settings-btn {
+        background-color: #3D2C2E; /* Same color as the logout button for consistency */
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        }
+
+.settings-btn:hover,
+.settings-btn:focus {
+    background-color: #639fab; /* Same hover color as logout button */
+    outline: 2px solid #3D2C2E; /* Added focus style for accessibility */
+}
+
+        .edit-overlay, .settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            z-index: 1000;
+        }
+        .edit-container, .settings-container {
+            background: #639fab;
+            padding: 20px;
+            border-radius: 8px;
+            width: 600px;
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+        }
+        .edit-container h3, .settings-container h3 {
+            margin-top: 0;
+        }
+        .answers-container, .timer-container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        .answer-wrapper, .timer-wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .answer-number, .timer-label {
+            font-weight: bold;
+        }
+        .answer-input, .title-input, .timer-input {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            padding: 5px;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+        }
+        .highlight {
+            border: 2px solid #3D2C2E;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .bold-text {
+            font-weight: bold;
+        }
+        .action-buttons-container {
+            margin-top: 20px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar navigation -->
+<div id="leftSidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="about.html">About</a>
+    <a href="credits.html">Credits</a>
+    <a href="contact.html">Contact</a>
+    <p><a href="admin.html">Login</a></p>
+
+    <div class="theme-toggle">
+        <span id="light-mode-label">Light Mode</span>
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <span id="dark-mode-label">Dark Mode</span>
+    </div>
+</div>
+
+<!-- Main content area -->
+<div id="main">
+    <button class="openbtn" onclick="openNav()">&#9776; <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px;"></button>
+
+    <!-- Logout and Settings Buttons in quizbank.html -->
+    <div class="logout-container">
+        <button id="logoutButton" class="logout-btn">Logout</button>
+        <button id="quizbankSettingsButton" class="settings-btn" onclick="openSettings()">Settings</button>
+    </div>
+
+    <!-- Quiz Bank Section -->
+    <div class="container">
+        <h2>Quiz Bank</h2>
+        <table id="quiz-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Answer</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Option 5</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows will be populated here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer with social media icons -->
+<div class="footer">
+    <div class="social-icons">
+        <a href="https://x.com/131Weenieh10256" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61566879842954" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/weenie-huts-975451332/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/csc131project/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/weeniehutjrs-131" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="footer-text">
+        Designed by Project Alpha
+    </div>
+</div>
+
+<!-- JavaScript for sidebar, theme toggle, logout, and settings functionality -->
+<script>
+    function openNav() {
+        document.getElementById("leftSidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("leftSidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
+    document.getElementById('theme-toggle-checkbox').addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme');
+        const isDarkMode = theme === 'dark';
+        document.getElementById('theme-toggle-checkbox').checked = isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", function() {
+        sessionStorage.clear();
+        window.location.href = "admin.html";
+    });
+
+    // Open Settings Popup
+    function openSettings() {
+        const overlay = document.createElement('div');
+        overlay.className = 'settings-overlay';
+        overlay.innerHTML = `
+            <div class="settings-container">
+                <h3 style="text-align: left;">Quiz Settings</h3>
+                
+                <!-- Quiz Title Input -->
+                <div class="title-container" style="margin-bottom: 20px;">
+                    <label for="quizTitle">Quiz Title:</label>
+                    <input type="text" id="quizTitle" class="title-input" placeholder="Enter quiz title">
+                </div>
+
+                <!-- Total Questions Selector -->
+                <div class="total-questions-container" style="margin-bottom: 20px;">
+                    <label for="totalQuestionsDropdown">Total Questions:</label>
+                    <select id="totalQuestionsDropdown" class="total-questions-select">
+                        <option value="5">5 Questions</option>
+                        <option value="10">10 Questions</option>
+                        <option value="15">15 Questions</option>
+                        <option value="20" selected>20 Questions</option>
+                        <option value="25">25 Questions</option>
+                    </select>
+                </div>
+
+                <!-- Timer Selector -->
+                <div class="timer-container" style="margin-bottom: 20px;">
+                    <label for="timerDropdown">Question Timer (seconds):</label>
+                    <select id="timerDropdown" class="timer-select">
+                        <option value="10">10 seconds</option>
+                        <option value="20">20 seconds</option>
+                        <option value="30" selected>30 seconds</option>
+                        <option value="60">60 seconds</option>
+                        <option value="90">90 seconds</option>
+                    </select>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons-container">
+                    <button onclick="saveSettings()">Save</button>
+                    <button onclick="closeSettings()">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    function closeSettings() {
+        const overlay = document.querySelector('.settings-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+
+    function saveSettings() {
+        const quizTitle = document.getElementById("quizTitle").value;
+        const totalQuestions = document.getElementById("totalQuestionsDropdown").value;
+        const questionTimer = document.getElementById("timerDropdown").value;
+
+        // Save settings to localStorage or apply them as needed
+        localStorage.setItem("quizTitle", quizTitle);
+        localStorage.setItem("totalQuestions", totalQuestions);
+        localStorage.setItem("questionTimer", questionTimer);
+
+        alert("Settings saved successfully!");
+
+        closeSettings();
+    }
+</script>
+
+<!-- JavaScript for edit and delete buttons in the quiz table -->
+<script>
+    let quizzes = [
+        { id: 1, title: 'Quiz 1', answer: 'Option A', options: ['Option A', 'Option B', 'Option C', 'Option D', 'Option E'], timer: 30 },
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const tableBody = document.getElementById('table-body');
+        quizzes.forEach((quiz) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${quiz.id}</td>
+                <td>${quiz.title}</td>
+                <td>${quiz.answer}</td>
+                ${quiz.options.map(option => `<td>${option}</td>`).join('')}
+                <td><button onclick="editQuiz(${quiz.id})">Edit</button></td>
+                <td><button onclick="deleteQuiz(${quiz.id})">Delete</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    });
+
+    function editQuiz(id) {
+        const quiz = quizzes.find(q => q.id === id);
+        if (!quiz) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'edit-overlay';
+        overlay.innerHTML = `
+            <div class="edit-container">
+                <h3 style="text-align: left;">Edit Question</h3>
+                <input type="text" id="questionInput" value="${quiz.title}" placeholder="Enter your question here" required>
+                <div class="answers-container">
+                    <h3>Answers</h3>
+                    <select name="answers" id="answers">
+                        <option value="">Select number of answers</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div id="answerFieldsContainer">
+                    ${quiz.options.map((option, index) => `
+                        <div class="answer-wrapper">
+                            <span class="answer-number">${index + 1}.</span>
+                            <input type="text" value="${option}" class="answer-input">
+                            <input type="checkbox" class="correct-checkbox">
+                            <label>Correct</label>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="timer-container" style="margin-bottom: 20px;">
+                    <label for="timerInput">Question Timer (seconds):</label>
+                    <input type="number" id="timerInput" value="${quiz.timer}" min="10" max="90" step="10" class="timer-input">
+                </div>
+                <div id="actionButtonsContainer" class="action-buttons-container">
+                    <button onclick="saveQuiz(${id})">Save</button>
+                    <button onclick="closeEdit()">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    function closeEdit() {
+        const overlay = document.querySelector('.edit-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+
+    function saveQuiz(id) {
+        const overlay = document.querySelector('.edit-overlay');
+        const updatedTitle = overlay.querySelector('#questionInput').value;
+        const updatedOptions = Array.from(overlay.querySelectorAll('.answer-input')).map(input => input.value);
+        const updatedTimer = overlay.querySelector('#timerInput').value;
+
+        const quiz = quizzes.find(q => q.id === id);
+        if (quiz) {
+            quiz.title = updatedTitle;
+            quiz.options = updatedOptions;
+            quiz.timer = updatedTimer;
+        }
+
+        document.getElementById('table-body').innerHTML = '';
+        quizzes.forEach((quiz) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${quiz.id}</td>
+                <td>${quiz.title}</td>
+                <td>${quiz.answer}</td>
+                ${quiz.options.map(option => `<td>${option}</td>`).join('')}
+                <td><button onclick="editQuiz(${quiz.id})">Edit</button></td>
+                <td><button onclick="deleteQuiz(${quiz.id})">Delete</button></td>
+            `;
+            document.getElementById('table-body').appendChild(row);
+        });
+
+        closeEdit();
+        alert('Quiz updated successfully!');
+    }
+
+    function deleteQuiz(id) {
+        if (confirm('Are you sure you want to delete this question?')) {
+            quizzes = quizzes.filter(q => q.id !== id);
+            document.getElementById('table-body').innerHTML = '';
+            quizzes.forEach((quiz) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${quiz.id}</td>
+                    <td>${quiz.title}</td>
+                    <td>${quiz.answer}</td>
+                    ${quiz.options.map(option => `<td>${option}</td>`).join('')}
+                    <td><button onclick="editQuiz(${quiz.id})">Edit</button></td>
+                    <td><button onclick="deleteQuiz(${quiz.id})">Delete</button></td>
+                `;
+                document.getElementById('table-body').appendChild(row);
+            });
+            alert('Quiz deleted successfully!');
+        }
+    }
+</script>
+
+<!-- JavaScript to open the settings overlay -->
+<script>
+    function openSettings() {
+        // Create the overlay for settings
+        const overlay = document.createElement('div');
+        overlay.className = 'settings-overlay';
+        overlay.innerHTML = `
+            <div class="settings-container">
+                <h3 style="text-align: left;">Quiz Settings</h3>
+                
+                <!-- Quiz Title Input -->
+                <div class="title-container" style="margin-bottom: 20px;">
+                    <label for="quizTitle">Quiz Title:</label>
+                    <input type="text" id="quizTitle" class="title-input" placeholder="Enter quiz title">
+                </div>
+
+                <!-- Total Questions Selector -->
+                <div class="total-questions-container" style="margin-bottom: 20px;">
+                    <label for="totalQuestionsDropdown">Total Questions:</label>
+                    <select id="totalQuestionsDropdown" class="total-questions-select">
+                        <option value="5">5 Questions</option>
+                        <option value="10">10 Questions</option>
+                        <option value="15">15 Questions</option>
+                        <option value="20" selected>20 Questions</option>
+                        <option value="25">25 Questions</option>
+                    </select>
+                </div>
+
+                <!-- Timer Selector -->
+                <div class="timer-container" style="margin-bottom: 20px;">
+                    <label for="timerDropdown">Question Timer (seconds):</label>
+                    <select id="timerDropdown" class="timer-select">
+                        <option value="10">10 seconds</option>
+                        <option value="20">20 seconds</option>
+                        <option value="30" selected>30 seconds</option>
+                        <option value="60">60 seconds</option>
+                        <option value="90">90 seconds</option>
+                    </select>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons-container">
+                    <button onclick="saveSettings()">Save</button>
+                    <button onclick="closeSettings()">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    function closeSettings() {
+        const overlay = document.querySelector('.settings-overlay');
+        if (overlay) overlay.remove();
+    }
+
+    function saveSettings() {
+        const quizTitle = document.getElementById("quizTitle").value;
+        const totalQuestions = document.getElementById("totalQuestionsDropdown").value;
+        const questionTimer = document.getElementById("timerDropdown").value;
+
+        // Save settings to localStorage or apply them as needed
+        localStorage.setItem("quizTitle", quizTitle);
+        localStorage.setItem("totalQuestions", totalQuestions);
+        localStorage.setItem("questionTimer", questionTimer);
+
+        alert("Settings saved successfully!");
+
+        closeSettings();
+    }
+</script>
+
+<script>
+    // Function to check sessionStorage for the 'openSettings' flag
+    function checkForOpenSettingsFlag() {
+        if (sessionStorage.getItem('openSettings') === 'true') {
+            sessionStorage.removeItem('openSettings');  // Remove the flag after opening the settings
+            openSettings();
+        }
+    }
+
+    // Run the check on page load
+    window.addEventListener('DOMContentLoaded', checkForOpenSettingsFlag);
+</script>
+
+</body>
+</html>

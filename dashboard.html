@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Quizineer</title>
+
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to external CSS file for page styling -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+    <!-- Standard Favicon for most browsers -->
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
+    
+    <!-- Apple Touch Icon (for iOS and macOS) -->
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    
+    <!-- Android Chrome Icon (for Android devices) -->
+    <link rel="icon" sizes="192x192" href="Images/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="Images/android-chrome-512x512.png">
+    
+    <!-- Microsoft Tile Icon for Windows (optional) -->
+    <meta name="msapplication-TileImage" content="Images/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+
+<body>
+
+<!-- Sidebar navigation -->
+<div id="leftSidebar" class="sidebar">
+
+    <!-- Close button for sidebar -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    
+    <!-- Sidebar page links -->
+    <a href="index.html">Home</a><br>
+    <a href="quiz.html">Quiz</a><br>
+    <a href="about.html">About</a><br>
+    <a href="credits.html">Credits</a><br>
+    <a href="contact.html">Contact</a><br>
+
+    <!-- Login link at the bottom of the sidebar -->
+    <p><a href="admin.html">Login</a></p>
+
+    <!-- Blank space for layout control -->
+    <br><br><br><br><br>
+
+    <!-- Toggle button for light/dark mode -->
+    <div class="theme-toggle">
+        <span id="light-mode-label">Light Mode</span>
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <span id="dark-mode-label">Dark Mode</span>
+    </div>
+</div>
+
+<!-- Main content area -->
+<div id="main">
+    <button class="openbtn" onclick="openNav()">☰ <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px;"></button>
+    
+    <!-- Logout Button -->
+    <div class="logout-container">
+        <h1>Admin Dashboard - Quiz Management</h1>
+        <div class="button-container">
+            <button id="logoutButton" class="logout-btn">Logout</button>
+            <button id="settingsButton" class="settings-btn" onclick="openQuizBankWithSettings()">Settings</button>
+
+
+
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section -->
+    <div class="container quiz-form"> 
+        <h3 style="text-align: left;">Question 1</h3>
+        <input type="text" id="questionInput" placeholder="Enter your question here" required>
+    
+        <!-- Answers heading and select dropdown on the same line -->
+        <div class="answers-container">
+            <h3>Answers</h3>
+            <select name="answers" id="answers" disabled>
+                <option value="">Select number of answers</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    
+        <!-- Container for dynamically generated answer fields -->
+        <div id="answerFieldsContainer"></div>
+
+        <!-- Container for dynamically generated questions -->
+        <div id="questionsContainer"></div>
+
+        <!-- Buttons to always be visible -->
+        <div id="actionButtonsContainer" class="action-buttons-container">
+            <button type="button" onclick="addQuestion()">Add Question</button>
+            <button type="button" onclick="submitQuestion()">Submit Question(s)</button>
+            <button type="button" onclick="window.location.href='quizbank.html'">Quiz Bank</button>
+        </div>
+    </div>
+</div>
+
+<!-- CSS styling for the page -->
+<style>
+   /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+    /* Global Box-Sizing for Consistent Layouts */
+    *, *::before, *::after {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #ffffff;
+        color: #333;
+    }
+
+    h3 {
+        margin-top: 10px;
+    }
+
+    .quiz-form {
+        max-width: 600px;
+        margin: auto;
+        background-color: #639fab;
+        padding: 20px;
+        border-radius: 8px;
+        -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    select, input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc; /* Updated to improve visibility */
+        border-radius: 4px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-transition: border-color 0.3s ease, -webkit-box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, -webkit-box-shadow 0.3s ease;
+        -o-transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+    }
+
+    select:focus, input[type="text"]:focus {
+        border-color: #639fab;
+        -webkit-box-shadow: 0 0 5px rgba(99, 159, 171, 0.5);
+                box-shadow: 0 0 5px rgba(99, 159, 171, 0.5);
+    }
+
+    .answers-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .answers-container select {
+        width: auto;
+        padding: 5px 10px;
+    }
+
+    .answer-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .answer-number {
+        font-weight: bold;
+    }
+
+    .answer-input {
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        padding: 5px;
+        border: 1px solid #ccc; /* Updated to improve visibility */
+        border-radius: 4px;
+        -webkit-transition: border-color 0.3s ease, -webkit-box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, -webkit-box-shadow 0.3s ease;
+        -o-transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+    }
+
+    .answer-input:focus {
+        border-color: #639fab;
+        -webkit-box-shadow: 0 0 5px rgba(99, 159, 171, 0.5);
+                box-shadow: 0 0 5px rgba(99, 159, 171, 0.5);
+    }
+
+    .correct-checkbox {
+        margin-left: 10px;
+    }
+
+    .highlight {
+        border: 8px solid #3D2C2E;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    /* Bold text styling for the correct answer field */
+    .bold-text {
+        font-weight: bold;
+    }
+
+    /* Logout Button Styling */
+    .logout-container {
+        text-align: center;
+        padding: 10px 10px;
+    }
+
+    .logout-btn {
+        background-color: #3D2C2E;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover,
+    .logout-btn:focus {
+        background-color: #639fab;
+        outline: 2px solid #3D2C2E; /* Added focus style for accessibility */
+    }
+
+    /* Settings Button Styling */
+    .settings-btn {
+    background-color: #3D2C2E;  /* You can change this color if needed */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    }
+
+    .settings-btn:hover,
+    .settings-btn:focus {
+    background-color: #639fab;
+    outline: 2px solid #3D2C2E; /* Added focus style for accessibility */
+    }
+
+    .action-buttons-container {
+        position: sticky;
+        bottom: 0;
+        background-color: #639fab; /* Matches the quiz form background */
+        padding: 10px;
+        text-align: center; /* Centers the buttons */
+        z-index: 10; /* Keeps it above other content */
+    }
+
+    .action-buttons-container button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background-color: #3D2C2E;
+        color: white;
+        -webkit-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        width: auto; /* Adjust the width to fit the button content */
+    }
+
+    .action-buttons-container button:hover,
+    .action-buttons-container button:focus {
+        background-color: #639fab;
+        outline: 2px solid #3D2C2E; /* Added focus style for accessibility */
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+        .feature-list {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+        }
+
+        .feature-item {
+            width: 80%;
+        }
+
+        .hero h1 {
+            font-size: 2em;
+        }
+
+        .hero p {
+            font-size: 1em;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            padding-right: 0px;
+        }
+    }
+</style>
+
+
+<!-- Footer Section with Social Media Icons -->
+<div class="footer">
+    <div class="social-icons">
+        <!-- Social media links with icons -->
+        <a href="https://x.com/131Weenieh10256" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61566879842954" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/weenie-huts-975451332/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/csc131project/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/weeniehutjrs-131" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+
+    <!-- Designed by Project Alpha text -->
+    <div class="footer-text">
+        Designed by Project Alpha
+    </div>
+</div>
+
+<!-- JavaScript functions to control sidebar behavior -->
+<script>
+    // Open sidebar by expanding width and shifting main content
+    function openNav() {
+        document.getElementById("leftSidebar").style.width = "250px"; // Sidebar width
+        document.getElementById("main").style.marginLeft = "250px"; // Adjust main content margin
+    }
+
+    // Close sidebar by resetting width and main content margin
+    function closeNav() {
+        document.getElementById("leftSidebar").style.width = "0"; // Hide sidebar
+        document.getElementById("main").style.marginLeft = "0"; // Reset margin
+    }
+    
+    // Theme toggle functionality
+    document.getElementById('theme-toggle-checkbox').addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+    });
+
+    // Check localStorage for theme preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme');
+        const isDarkMode = theme === 'dark';
+        document.getElementById('theme-toggle-checkbox').checked = isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    });
+</script>
+
+<!-- JavaScript for Logout Functionality -->
+<script>
+    document.getElementById("logoutButton").addEventListener("click", function() {
+        sessionStorage.clear(); // Clears session data; use localStorage if login is stored there
+        window.location.href = "admin.html";
+    });
+</script>
+
+<script>
+    document.getElementById("settingsButton").addEventListener("click", function() {
+    // Redirects to quizbank.html and targets the settings button by ID
+    window.location.href = "quizbank.html#quizbankSettingsButton";
+});
+
+</script>
+
+<!-- JavaScript for enabling answers dropdown and dynamic answer fields -->
+<script>
+    const previousAnswers = {};  // Object to store existing answers by field index
+
+    document.getElementById("questionInput").addEventListener("input", function() {
+        const answerDropdown = document.getElementById("answers");
+        answerDropdown.disabled = !this.value.trim();
+    });
+
+    document.getElementById("answers").addEventListener("change", function() {
+        const answerCount = parseInt(this.value, 10);
+        const container = document.getElementById("answerFieldsContainer");
+        
+        // Save current values in previousAnswers
+        document.querySelectorAll(".answer-input").forEach((input, index) => {
+            previousAnswers[index + 1] = input.value;
+        });
+
+        // Clear and recreate answer fields based on the selected count
+        container.innerHTML = "";
+
+        for (let i = 1; i <= answerCount; i++) {
+            const answerWrapper = document.createElement("div");
+            answerWrapper.classList.add("answer-wrapper");
+
+            const answerNumber = document.createElement("span");
+            answerNumber.classList.add("answer-number");
+            answerNumber.textContent = `${i}.`;
+
+            const answerInput = document.createElement("input");
+            answerInput.type = "text";
+            answerInput.name = `answer${i}`;
+            answerInput.classList.add("answer-input");
+            answerInput.required = true;
+
+            // Restore previous answer if it exists
+            if (previousAnswers[i]) {
+                answerInput.value = previousAnswers[i];
+            }
+
+            const correctCheckbox = document.createElement("input");
+            correctCheckbox.type = "checkbox";
+            correctCheckbox.classList.add("correct-checkbox");
+
+            const correctLabel = document.createElement("label");
+            correctLabel.textContent = "Correct answer";
+
+            correctCheckbox.addEventListener("change", function() {
+                // Remove bold styling and highlights from all answer fields
+                document.querySelectorAll(".correct-checkbox").forEach(cb => {
+                    cb.checked = false;
+                    cb.closest(".answer-wrapper").classList.remove("highlight");
+                    cb.closest(".answer-wrapper").querySelector(".answer-input").classList.remove("bold-text");
+                });
+
+                // Apply bold styling and highlight only to the selected answer
+                this.checked = true;
+                answerWrapper.classList.add("highlight");
+                answerInput.classList.add("bold-text");
+            });
+
+            answerWrapper.appendChild(answerNumber);
+            answerWrapper.appendChild(answerInput);
+            answerWrapper.appendChild(correctCheckbox);
+            answerWrapper.appendChild(correctLabel);
+            container.appendChild(answerWrapper);
+        }
+    });
+
+    let questionCount = 1;
+    function addQuestion() {
+        if (questionCount >= 10) {
+            alert("You can only add up to 10 questions.");
+            return;
+        }
+        questionCount++;
+        const questionsContainer = document.getElementById("questionsContainer");
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question-item");
+        questionDiv.innerHTML = `
+            <h3>Question ${questionCount}</h3>
+            <input type="text" id="questionInput${questionCount}" placeholder="Enter your question here" required>
+
+            <div class="answers-container">
+                <h3>Answers</h3>
+                <select name="answers${questionCount}" id="answers${questionCount}">
+                    <option value="">Select number of answers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div id="answerFieldsContainer${questionCount}"></div>
+        `;
+        questionsContainer.appendChild(questionDiv);
+
+        document.getElementById(`answers${questionCount}`).addEventListener("change", function() {
+            const answerCount = parseInt(this.value, 10);
+            const container = document.getElementById(`answerFieldsContainer${questionCount}`);
+            container.innerHTML = "";
+
+            for (let i = 1; i <= answerCount; i++) {
+                const answerWrapper = document.createElement("div");
+                answerWrapper.classList.add("answer-wrapper");
+
+                const answerNumber = document.createElement("span");
+                answerNumber.classList.add("answer-number");
+                answerNumber.textContent = `${i}.`;
+
+                const answerInput = document.createElement("input");
+                answerInput.type = "text";
+                answerInput.name = `answer${questionCount}_${i}`;
+                answerInput.classList.add("answer-input");
+                answerInput.required = true;
+
+                const correctCheckbox = document.createElement("input");
+                correctCheckbox.type = "checkbox";
+                correctCheckbox.classList.add("correct-checkbox");
+
+                const correctLabel = document.createElement("label");
+                correctLabel.textContent = "Correct answer";
+
+                correctCheckbox.addEventListener("change", function() {
+                    // Remove bold styling and highlights from all answer fields in this question
+                    container.querySelectorAll(".correct-checkbox").forEach(cb => {
+                        cb.checked = false;
+                        cb.closest(".answer-wrapper").classList.remove("highlight");
+                        cb.closest(".answer-wrapper").querySelector(".answer-input").classList.remove("bold-text");
+                    });
+
+                    // Apply bold styling and highlight only to the selected answer
+                    this.checked = true;
+                    answerWrapper.classList.add("highlight");
+                    answerInput.classList.add("bold-text");
+                });
+
+                answerWrapper.appendChild(answerNumber);
+                answerWrapper.appendChild(answerInput);
+                answerWrapper.appendChild(correctCheckbox);
+                answerWrapper.appendChild(correctLabel);
+                container.appendChild(answerWrapper);
+            }
+        });
+    }
+</script>
+
+<script>
+    function openQuizBankWithSettings() {
+        sessionStorage.setItem('openSettings', 'true');
+        window.location.href = 'quizbank.html';
+    }
+</script>
+
+</body>
+</html>

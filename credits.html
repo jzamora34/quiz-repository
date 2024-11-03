@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits - Quizineer</title>
+
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Link to external CSS file for page styling -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+    <!-- Standard Favicon for most browsers -->
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
+    
+    <!-- Apple Touch Icon (for iOS and macOS) -->
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    
+    <!-- Android Chrome Icon (for Android devices) -->
+    <link rel="icon" sizes="192x192" href="Images/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="Images/android-chrome-512x512.png">
+    
+    <!-- Microsoft Tile Icon for Windows (optional) -->
+    <meta name="msapplication-TileImage" content="Images/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+<body>
+
+<!-- Sidebar navigation -->
+<div id="leftSidebar" class="sidebar">
+
+    <!-- Close button for sidebar -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    
+    <!-- Sidebar page links -->
+    <a href="index.html">Home</a><br>
+    <a href="quiz.html">Quiz</a><br>
+    <a href="about.html">About</a><br>
+    <a href="credits.html">Credits</a><br>
+    <a href="contact.html">Contact</a><br>
+
+    <!-- Login link at the bottom of the sidebar -->
+    <p><a href="admin.html">Login</a></p>
+
+    <!-- Blank space for layout control -->
+    <br><br><br><br><br>
+
+    <!-- Toggle button for light/dark mode -->
+    <div class="theme-toggle">
+        <span id="light-mode-label">Light Mode</span>
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <span id="dark-mode-label">Dark Mode</span>
+    </div>
+</div>
+
+<!-- Main content area -->
+<div id="main">
+    <button class="openbtn" onclick="openNav()">☰ <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px;"></button>
+
+    <!-- Credits Section -->
+    <div class="container credits-section">
+        <h1>Credits</h1>
+        <div class="member">
+            <img src="images/Steven.jpg" alt="Steven Inouye" class="team-photo">
+            <h4>Steven Inouye</h4>
+            <p>Back-End Developer</p>
+        </div>
+        <div class="member">
+            <img src="images/Tatiana.jpg" alt="Tatiana Neville" class="team-photo">
+            <h4>Tatiana Neville</h4>
+            <p>Project Manager</p>
+        </div>
+        <div class="member">
+            <img src="images/Devin.jpg" alt="Devin Wynne" class="team-photo">
+            <h4>Devin Wynne</h4>
+            <p>Front-End Developer</p>
+        </div>
+        <div class="member">
+            <img src="images/Joshua.jpg" alt="Joshua Zamora" class="team-photo">
+            <h4>Joshua Zamora</h4>
+            <p>Front-End Developer</p>
+            <p>Build and design the key pages of the website.</p>
+            <p>Include interactive features to enhance user engagement.</p>
+            <p>Maintain a cohesive style throughout the site.</p>
+            <p>Create and integrate the website’s logo and icon.</p>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section with Social Media Icons -->
+<div class="footer">
+    <div class="social-icons">
+
+        <!-- Social media links with icons -->
+        <a href="https://x.com/131Weenieh10256" target="_blank"><i class="fab fa-twitter"></i></a> <!-- Twitter -->
+        <a href="https://www.facebook.com/profile.php?id=61566879842954" target="_blank"><i class="fab fa-facebook-f"></i></a> <!-- Facebook -->
+        <a href="https://www.linkedin.com/in/weenie-huts-975451332/" target="_blank"><i class="fab fa-linkedin-in"></i></a> <!-- LinkedIn -->
+        <a href="https://www.instagram.com/csc131project/" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Instagram -->
+        <a href="https://github.com/weeniehutjrs-131" target="_blank"><i class="fab fa-github"></i></a> <!-- GitHub -->
+    </div>
+
+    <!-- Designed by Project Alpha text -->
+    <div class="footer-text">
+        Designed by Project Alpha
+    </div>
+</div>
+
+<!-- JavaScript functions to control sidebar behavior -->
+<script>
+
+    // Open sidebar by expanding width and shifting main content
+    function openNav() {
+        document.getElementById("leftSidebar").style.width = "250px"; // Sidebar width
+        document.getElementById("main").style.marginLeft = "250px"; // Adjust main content margin
+    }
+
+    // Close sidebar by resetting width and main content margin
+    function closeNav() {
+        document.getElementById("leftSidebar").style.width = "0"; // Hide sidebar
+        document.getElementById("main").style.marginLeft = "0"; // Reset margin
+    }
+
+    // Theme toggle functionality
+    document.getElementById('theme-toggle-checkbox').addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+
+        // Save theme to localStorage
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+    });
+
+    // Check localStorage for theme preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme');
+        const isDarkMode = theme === 'dark';
+        document.getElementById('theme-toggle-checkbox').checked = isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    });
+</script>
+</body>
+</html>

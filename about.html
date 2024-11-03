@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Quizineer</title>
+    
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to external CSS file for page styling -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+    <!-- Standard Favicon for most browsers -->
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
+    
+    <!-- Apple Touch Icon (for iOS and macOS) -->
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    
+    <!-- Android Chrome Icon (for Android devices) -->
+    <link rel="icon" sizes="192x192" href="Images/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="Images/android-chrome-512x512.png">
+    
+    <!-- Microsoft Tile Icon for Windows (optional) -->
+    <meta name="msapplication-TileImage" content="Images/android-chrome-192x192.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    
+</head>
+<body>
+
+<!-- Sidebar navigation -->
+<div id="leftSidebar" class="sidebar">
+
+    <!-- Close button for sidebar -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    
+    <!-- Sidebar page links -->
+    <a href="index.html">Home</a><br>
+    <a href="quiz.html">Quiz</a><br>
+    <a href="about.html">About</a><br>
+    <a href="credits.html">Credits</a><br>
+    <a href="contact.html">Contact</a><br>
+
+    <!-- Login link at the bottom of the sidebar -->
+    <p><a href="admin.html">Login</a></p>
+
+    <!-- Blank space for layout control -->
+    <br><br><br><br><br>
+
+    <!-- Toggle button for light/dark mode -->
+    <div class="theme-toggle">
+        <span id="light-mode-label">Light Mode</span>
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <span id="dark-mode-label">Dark Mode</span>
+    </div>
+</div>
+
+<!-- Main content area -->
+<div id="main">
+    <button class="openbtn" onclick="openNav()">☰ <img src="images/quiz-logo.png" alt="Quiz Logo" style="width: 120px;"></button>
+
+    <!-- About Us Section -->
+    <div class="container about-section">
+        <h3>About Us</h3>
+        <h1>Meet the team.</h1>
+
+        <!-- Team Members Grid -->
+        <div class="team-grid">
+
+            <!-- Team Member 2: Steven Inouye -->
+            <div class="member" onclick="toggleDetails(this)">
+                <img src="images/Steven.jpg" alt="Steven Inouye" class="team-photo">
+                <h4>Steven Inouye</h4>
+                <p class="short-qualifications">Back-End Developer</p>
+                <div class="full-qualifications">
+                    <h4>Educational Qualifications</h4>
+                    <ul>
+                        <li>California State University, Sacramento (2023 - Present)</li>
+                    </ul>
+                    <h4>Professional Skills</h4>
+                    <ul>
+                        <li>?</li>
+                    </ul>
+                    <h4>Technical Skills</h4>
+                    <ul>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>NodeJS</li>
+                        <li>Data Recovery</li>
+                        <li>Server/Network deployment</li>
+                        <li>Virus removal</li>
+                        <li>Computer and Mobile Repair</li>
+                    </ul>
+                    <h4>Awards/Recognition</h4>
+                    <ul>
+                        <li>Machine Learning Specialization Certificate</li>
+                    </ul>
+                    <h4>Work Experience</h4>
+                    <ul>
+                        <li>KW Systems Technician (Oct 2022 - Aug 2024)</li>
+                    </ul>
+                </div>
+                <span class="arrow">↓</span>
+            </div>
+
+            <!-- Team Member 3: Tatiana Neville -->
+            <div class="member" onclick="toggleDetails(this)">
+                <img src="images/Tatiana.jpg" alt="Tatiana Neville" class="team-photo">
+                <h4>Tatiana Neville</h4>
+                <p class="short-qualifications">Project Manager<br>Back-End Developer</p>
+                <div class="full-qualifications">
+                    <h4>Educational Qualifications</h4>
+                    <ul>
+                        <li>Porter Community College</li>
+                        <li>Carrington College</li>
+                        <li>My-Le's</li>
+                        <li>CSUS</li>
+                    </ul>
+                    <h4>Professional Skills</h4>
+                    <ul>
+                        <li>?</li>
+                    </ul>
+                    <h4>Technical Skills</h4>
+                    <ul>
+                        <li>?</li>
+                    </ul>
+                    <h4>Awards/Recognition</h4>
+                    <ul>
+                        <!-- Awards content, if available -->
+                    </ul>
+                    <h4>Work Experience</h4>
+                    <ul>
+                        <li>?</li>
+                    </ul>
+                </div>
+                <span class="arrow">↓</span>
+            </div>
+
+            <!-- Team Member 4: Devin Wynne -->
+            <div class="member" onclick="toggleDetails(this)">
+                <img src="images/Devin.jpg" alt="Devin Wynne" class="team-photo">
+                <h4>Devin Wynne</h4>
+                <p class="short-qualifications">Front-End Developer</p>
+                <div class="full-qualifications">
+                    <h4>Educational Qualifications</h4>
+                    <ul>
+                        <li>Cosumnes River College (A.S. in Computer Science)</li>
+                        <li>California State University, Sacramento</li>
+                    </ul>
+                    <h4>Professional Skills</h4>
+                    <ul>
+                        <li>Sales and Customer Service</li>
+                        <li>Onboarding/Mentorship</li>
+                        <li>Fleet Management (Vehicle Maintenance Oversight, Compliance Knowledge, Logistics Coordination)</li>
+                        <li>Data Entry</li>
+                        <li>Confidentiality Management</li>
+                        <li>Product Knowledge</li>
+                        <li>Inventory Management</li>
+                        <li>Quality Control</li>
+                        <li>Record Keeping</li>
+                        <li>Time-Lapse Project Coordination</li>
+                        <li>Technical Writing/Documentation</li>
+                        <li>Documentation Management</li>
+                        <li>Cross-Functional Collaboration</li>
+                    </ul>
+                    <h4>Technical Skills</h4>
+                    <ul>
+                        <li>SAP Data Management Software</li>
+                        <li>Data Governance</li>
+                        <li>Master Data Management</li>
+                        <li>Spreadsheet Management</li>
+                        <li>Vehicle Maintenance</li>
+                        <li>Basic IT Troubleshooting</li>
+                    </ul>
+                    <h4>Awards/Recognition</h4>
+                    <ul>
+                        <!-- Awards content, if available -->
+                    </ul>
+                    <h4>Work Experience</h4>
+                    <ul>
+                        <li>Original Paint & Equipment</li>
+                        <li>Department of Water Resources (Division of Business Services: Administration and Transportation)</li>
+                    </ul>
+                </div>
+                <span class="arrow">↓</span>
+            </div>
+
+            <!-- Team Member 5: Joshua Zamora -->
+            <div class="member" onclick="toggleDetails(this)">
+                <img src="images/Joshua.jpg" alt="Joshua Zamora" class="team-photo">
+                <h4>Joshua Zamora</h4>
+                <p class="short-qualifications">Front-End Developer</p>
+                <div class="full-qualifications">
+                    <h4>Educational Qualifications</h4>
+                    <ul>
+                        <li>California State University, Sacramento (2023 - Present)</li>
+                        <li>Sierra Community College, Rocklin – (Summer 2024)</li>
+                        <li>Embry-Riddle Aeronautical University – A.S. in Engineering Fundamentals (2021 - 2023)</li>
+                        <li>American Military University (2016 - 2018)</li>
+                        <li>Community College of the Air Force (2008 - 2019)</li>
+                    </ul>
+                    <h4>Professional Skills</h4>
+                    <ul>
+                        <li>Cross-functional Team Leadership</li>
+                        <li>Project Planning</li>
+                        <li>Budget Management</li>
+                        <li>Aircraft Maintenance & Inspection</li>
+                        <li>Safety management & Workplace Safety Compliance</li>
+                        <li>Research & Development</li>
+                        <li>Proposal Writing & Drafting</li>
+                        <li>Records & Inventory Management</li>
+                        <li>Collaborative & Virtual Teamwork</li>
+                        <li>Business & Customer Relationship Management</li>
+                        <li>Interpersonal Communication & Leadership Development</li>
+                        <li>Organizational Risk Management</li>
+                        <li>Project Manager</li>
+                    </ul>
+                    <h4>Technical Skills</h4>
+                    <ul>
+                        <li>Security Controls (NIST SP 800-53)</li>
+                        <li>Organizational Risk Management (NIST SP 800-37)</li>
+                        <li>Threat & Vulnerability Management, Malware Detection</li>
+                        <li>Security Operations Center (SOC) Operations</li>
+                        <li>Firewall Configuration and Management (EDU-210)</li>
+                        <li>Network Security and Cybersecurity Fundamentals (Palo Alto, EDU-210)</li>
+                        <li>Privacy Controls and Data Governance</li>
+                        <li>Microsoft Azure Fundamentals</li>
+                        <li>Palo Alto Cloud Security Fundamentals</li>
+                        <li>Network Address Translation (NAT)</li>
+                        <li>Network Security Fundamentals</li>
+                        <li>Drone Maintenance, GPS Navigation, Flight Safety, Flight Planning</li>
+                        <li>Aircraft Inspection and Maintenance, Mechanical Troubleshooting</li>
+                        <li>Aircraft Accident Investigation</li>
+                        <li>NX Siemens CAD, Fusion 360, AutoCAD</li>
+                        <li>Certified SOLIDWORKS Associate (Mechanical Design)</li>
+                        <li>3D Printing, Materials Science</li>
+                        <li>Java, C#, MATLAB</li>
+                        <li>Visual Studio, IBM SPSS Statistics, Microsoft Office</li>
+                        <li>Blockchain Architecture</li>
+                    </ul>
+                    <h4>Awards/Recognition</h4>
+                    <ul>
+                        <li>Dean’s Honor List, California State University, Sacramento – Spring 2024</li>
+                        <li>Leslie and Anita Harper Alumni Scholarship, California State University, Sacramento – Fall 2024</li>
+                        <li>Golden Key Honor Society, California State University, Sacramento – January 2024</li>
+                        <li>Dean’s List, Embry-Riddle Aeronautical University – Spring 2020, Fall 2020, Winter 2021, Spring 2021, Summer 2021, Fall 2021, Winter 2022, Spring 2022, Summer 2022, Fall 2022, Winter 2023</li>
+                        <li>Alpha Sigma Lambda Honor Society, Embry-Riddle Aeronautical University – May 2021</li>
+                    </ul>
+                    <h4>Work Experience</h4>
+                    <ul>
+                        <li>DeadLock Security – Intern (2024 - Present)</li>
+                        <li>NASA L'SPACE MCA – Student Safety Officer, Research & Development (January 2022 - April 2022)</li>
+                        <li>NASA L'SPACE NPWEE Academy – Student Principal Investigator (September 2021 - December 2021)</li>
+                        <li>United States Air Force – Aircraft Maintenance Supervisor (January 2008 - October 2019)</li>
+                    </ul>
+                </div>
+                <span class="arrow">↓</span>
+            </div>
+        </div> <!-- Closing tag for .team-grid -->
+    </div> <!-- Closing tag for .about-section -->
+</div> <!-- Closing tag for #main -->
+
+
+<!-- Footer Section with Social Media Icons -->
+<div class="footer">
+    <div class="social-icons">
+
+        <!-- Social media links with icons -->
+        <a href="https://x.com/131Weenieh10256" target="_blank"><i class="fab fa-twitter"></i></a> <!-- Twitter -->
+        <a href="https://www.facebook.com/profile.php?id=61566879842954" target="_blank"><i class="fab fa-facebook-f"></i></a> <!-- Facebook -->
+        <a href="https://www.linkedin.com/in/weenie-huts-975451332/" target="_blank"><i class="fab fa-linkedin-in"></i></a> <!-- LinkedIn -->
+        <a href="https://www.instagram.com/csc131project/" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Instagram -->
+        <a href="https://github.com/weeniehutjrs-131" target="_blank"><i class="fab fa-github"></i></a> <!-- GitHub -->
+    </div>
+
+    <!-- Designed by Project Alpha text -->
+    <div class="footer-text">
+        Designed by Project Alpha
+    </div>
+</div>
+
+<!-- JavaScript to handle the sidebar and team member details toggle -->
+<script>
+
+    // Sidebar toggle functions
+    function openNav() {
+        document.getElementById("leftSidebar").style.width = "250px"; // Sidebar width
+        document.getElementById("main").style.marginLeft = "250px"; // Adjust main content margin
+    }
+
+    function closeNav() {
+        document.getElementById("leftSidebar").style.width = "0"; // Hide sidebar
+        document.getElementById("main").style.marginLeft = "0"; // Reset margin
+    }
+
+    // Theme toggle functionality
+    document.getElementById('theme-toggle-checkbox').addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+
+        // Save theme to localStorage
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+    });
+
+    // Check localStorage for theme preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme');
+        const isDarkMode = theme === 'dark';
+        document.getElementById('theme-toggle-checkbox').checked = isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    });
+
+
+</script>
+
+<!-- Full Qualifications Toggle Script -->  
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const members = document.querySelectorAll('.member');
+
+        members.forEach(member => {
+            const arrow = member.querySelector('.arrow');
+            const fullQualifications = member.querySelector('.full-qualifications');
+
+            member.addEventListener('click', function() {
+                const currentlyVisible = document.querySelector('.full-qualifications.show');
+                
+                if (currentlyVisible && currentlyVisible !== fullQualifications) {
+                    currentlyVisible.classList.remove('show');
+                    currentlyVisible.previousElementSibling.classList.remove('rotate');
+                }
+
+                fullQualifications.classList.toggle('show');
+                arrow.classList.toggle('rotate');
+            });
+        });
+    });
+</script>
+</body>
+</html>
