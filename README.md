@@ -1,2 +1,0 @@
-# quiz-repository
-Group Project
