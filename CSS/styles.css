@@ -6,11 +6,22 @@
 */
 
 /* Base styling for the body */
+html, body {
+    height: 100%;  /* Make sure the body and HTML elements take full height */
+    margin: 0;
+}
+
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Lato', Arial, sans-serif;
     margin: 0;
     background-color: #f5edf0;
     color: #3d2c2e;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+h1, h2, h3 {
+    font-weight: 700;
 }
 
 /* Sidebar Styling */
@@ -27,6 +38,7 @@ body {
     transition: 0.7s;
     padding-top: 80px;
     z-index: 1000;
+    background: linear-gradient(135deg,  #272021, #3D2C2E);
 }
 
 .sidebar a {
@@ -42,7 +54,7 @@ body {
 }
 
 .sidebar a:hover {
-    color: #639FAB;
+    color: #91c7c1; /* Softer accent color for hover */
 }
 
 .sidebar .closebtn {
@@ -60,11 +72,19 @@ body {
     padding: 10px 15px;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px; /* Rounded corners */
+    
 }
 
 .openbtn img {
     vertical-align: middle;
     width: 120px;
+}
+
+    .openbtn:hover {
+    transform: scale(1.05); /* Add a slight scale-up effect on hover */
+    background-color: #3D2C2E; /* Darken button color on hover */
 }
 
 #main {
@@ -77,9 +97,10 @@ body {
 /* Hero Section Styling */
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 240px 210px; /* Increase top and bottom padding */
     background-color: #f0f0f5;
     color: #3d2c2e;
+    background: linear-gradient(120deg, #639fab, #e8e4e6);
 }
 
 .hero h1 {
@@ -103,16 +124,25 @@ body {
     -webkit-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
+    background: linear-gradient(45deg, #639FAB, #4d7a89);
 }
 
 .hero button:hover {
     background-color: #4d7a89;
 }
 
+/* Keyframe animation for hover effect */
+@keyframes cardHover {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+
 /* Feature Highlights Section */
 .features {
     text-align: center;
-    padding: 40px 20px;
+    padding: 100px 40px;
     background-color: #ffffff;
     color: #3d2c2e;
 }
@@ -142,7 +172,7 @@ body {
     border-radius: 10px;
     text-align: center;
     -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     -webkit-transition: -webkit-transform 0.3s;
     transition: -webkit-transform 0.3s;
     -o-transition: transform 0.3s;
@@ -164,6 +194,7 @@ body {
         -ms-transform: scale(1.05);
             transform: scale(1.05);
     background-color: #4d7a89;
+    animation: cardHover 0.5s ease;
 }
 
 /* Theme Toggle Styling */
@@ -193,16 +224,16 @@ body {
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    width: 50px;
-    height: 20px;
-    background-color: #639FAB;
-    border-radius: 15px;
+    width: 60px;
+    height: 30px;
+    background-color: #555;
+    border-radius: 30px;
     position: relative;
     outline: none;
     cursor: pointer;
     -webkit-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.4s ease;
 }
 
 #theme-toggle-checkbox:checked {
@@ -212,16 +243,16 @@ body {
 #theme-toggle-checkbox::after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 16px;
-    height: 16px;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
     background-color: white;
-    border-radius: 50%;
+    border-radius: 60%;
     -webkit-transition: -webkit-transform 0.3s ease;
     transition: -webkit-transform 0.3s ease;
     -o-transition: transform 0.3s ease;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
     transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
@@ -245,10 +276,14 @@ body {
     background-color: #3D2C2E;
     color: white;
     text-align: center;
-    padding: 20px;
+    aligh-items: center;
+    padding: 30px;
+    background: linear-gradient(to top, #272021, #3D2C2E);
+    padding: 40px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    gap: 20px;
 }
 
 .footer .social-icons {
@@ -260,7 +295,7 @@ body {
 
 .footer .social-icons a {
     color: white;
-    font-size: 20px;
+    font-size: 22px;
     text-decoration: none;
     -webkit-transition: color 0.3s ease;
     -o-transition: color 0.3s ease;
@@ -317,6 +352,7 @@ body {
     cursor: pointer;
     width: 23%; /* Adjusted width for four members in a row */
     transition: background-color 0.3s ease;
+    
 }
 
 /* Responsive layout for medium and small screens */
@@ -327,6 +363,9 @@ body {
     }
     .member {
         width: 45%; /* Two columns on medium screens */
+    }
+    .features h2 {
+        font-size: 1.8em;
     }
 }
 
@@ -357,7 +396,8 @@ body.dark-mode .member h4 {
 }
 
 .member:hover {
-    background-color: #3d2c2e;
+    background: linear-gradient(120deg, #639FAB, #3D2C2E);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .short-qualifications {
@@ -514,6 +554,7 @@ body.dark-mode textarea::placeholder {
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    padding-bottom: 60px; /* Add more padding specifically at the bottom */
     background-color: #f2f2f2;
     border-radius: 5px;
     -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -531,7 +572,7 @@ body.dark-mode textarea::placeholder {
     padding: 12px;
     margin-bottom: 10px;
     font-size: 18px;
-    border: 1px solid #ccc;
+    border: 2px solid #3D2C2E;
     border-radius: 5px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -550,6 +591,7 @@ body.dark-mode textarea::placeholder {
     font-size: 18px;
     width: 100%;
     border-radius: 5px;
+    margin-bottom: 60px; /* Increase this value for more space below the button */
 }
 
 .container input[type="submit"]:hover,
@@ -572,7 +614,7 @@ body.dark-mode textarea::placeholder {
     }
 
     .feature-item {
-        width: 80%;
+        width: 90%;
     }
 
     .hero h1 {
@@ -623,5 +665,26 @@ body.dark-mode textarea::placeholder {
     }
 }
 
+#questionsContainer {
+    margin-bottom: 60px; /* Add more space below dynamically generated questions */
+}
 
+.container.quiz-form {
+    margin-bottom: 80px; /* Adds extra space below the quiz form */
+}
 
+#main {
+    padding-bottom: 100px; /* Extra padding to prevent content from overlapping the footer */
+}
+
+.logo {
+    width: 20%;  /* Adjust to desired percentage */
+    height: auto;  /* Maintain aspect ratio */
+    max-width: 300px;  /* Optional: Set a maximum size */
+}
+
+@media (max-width: 600px) {
+    .logo {
+        width: 40%; /* Increase size for smaller screens if needed */
+    }
+}
